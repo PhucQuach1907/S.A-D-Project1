@@ -1,0 +1,97 @@
+* {
+    font-family: 'Poppins', sans-serif;
+}
+
+body {
+    display: flex;
+    margin: 4px;
+}
+
+aside {
+    background-color: #302d2d;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    height: 98vh;
+    width: 200px;
+    border-radius: 10px;
+    margin-right: 10px;
+}
+
+aside .aside-tab {
+    display: flex;
+    align-items: center;
+    height: 10vh;
+}
+
+aside a {
+    text-decoration: none;
+    font-weight: 800;
+    color: white;
+}
+
+.content {
+    background-color: #474443;
+    color: white;
+    border-radius: 10px;
+    padding: 20px;
+    overflow: auto;
+    max-height: 98vh;
+    width: 1460px;
+}
+
+.content table, th, td {
+  border: solid 1px white;
+}
+
+.content .category-name {
+    width: 280px;
+    height: 50px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.content .product-details {
+    display: flex;
+    border : solid 2px white;
+    padding: 10px;
+    margin-bottom: 10px;
+}
+
+.content .product-details img {
+    width: 100%;
+    height: auto;
+    border: none;
+}
+
+.content .product-details .product-content {
+    display: flex;
+    flex-direction: column;
+    margin-left: 10px;
+}
+
+.content .product-details .product-content p{
+    margin: 0;
+    margin-bottom: 10px;
+}
+
+.content .product-details .product-content p span{
+    font-weight: 600;
+    color: aquamarine;
+}
+
+.content .product-details .product-content .price {
+    color: red;
+    font-weight: 800;
+}
+
+.content .product-details .product-content button {
+    background-color: red;
+    color: wheat;
+    width: 100px;
+    height: 50px;
+    border: none;
+    border-radius: 10px;
+    font-weight: 600;
+}
