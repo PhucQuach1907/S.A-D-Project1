@@ -95,3 +95,12 @@ aside a {
     border-radius: 10px;
     font-weight: 600;
 }
+
+.content .product-details .product-content button:hover {
+    cursor: pointer;
+}
+
+.content .product-details .product-content a {
+    width: 100px;
+    height: 50px;
+}

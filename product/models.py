@@ -27,14 +27,14 @@ class Product(models.Model):
         db_table = 'products' 
         ordering = ['-created_at'] 
 
-    def __unicode__(self): 
+    def __str__(self): 
         return self.name 
     
     def get_absolute_url(self): 
         return reverse('catalog_product', args=((), { 'product_slug': self.slug })) 
     
-    def sale_price(self): 
-        if self.old_price > self.price: 
-            return self.price 
-        else: 
-            return None
+    # def sale_price(self): 
+    #     if self.old_price > self.price: 
+    #         return self.price 
+    #     else: 
+    #         return None

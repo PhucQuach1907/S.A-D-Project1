@@ -9,13 +9,9 @@
     <p><span>Description:</span> {{ product.description }}</p>
     <p><span>Category:</span> {{ product.categories.all|join:', ' }}</p>
     <p class="price"><span>Price:</span> {{ product.price }}</p>
-    {% comment %}
-    <form method="post" action="{% url 'add_to_cart' %}">
-      {% csrf_token %} {{ form.quantity }} {{ form.product_slug }}
-      <input type="submit" value="Add to cart" />
-    </form>
-    {% endcomment %}
-    <button>Add to cart</button>
+    <a href="{% url 'add_to_cart' product.id %}"
+      ><button>Add to cart</button></a
+    >
   </div>
 </div>
 {%endfor %} {% endblock content %}

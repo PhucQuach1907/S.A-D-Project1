@@ -1,34 +1,30 @@
-# from django.shortcuts import render, redirect
-# from django.http import HttpResponseRedirect
-# from django.urls import reverse
-# from django.contrib import messages
-# from .forms import ProductAddToCartForm
-# from .models import CartItem
-# from product.models import Product
+from django.shortcuts import redirect, render
 
-# def add_to_cart(request, product_slug):
-#     product = Product.objects.get(slug=product_slug)
+from product.models import Product
+from .forms import ProductAddToCartForm
+from .models import CartItem
 
-#     if request.method == 'POST':
-#         form = ProductAddToCartForm(request.POST, request=request)
-#         if form.is_valid():
-#             quantity = form.cleaned_data['quantity']
+def view_cart(request):
+    cart_items = CartItem.objects.all()
+    return render(request, 'cart.html', {'cart_items' : cart_items})
 
-#             cart_item, created = CartItem.objects.get_or_create(
-#                 cart_id=request.session.session_key,
-#                 product=product
-#             )
+def add_to_cart(request, product_id):
+    product = Product.objects.get(id=product_id)
+    cart_item, created = CartItem.objects.get_or_create(product=product)
 
-#             if not created:
-#                 cart_item.quantity += quantity
-#             else:
-#                 cart_item.quantity = quantity
+    if created:
+        cart_item.quantity = 1
+    else:
+        cart_item.quantity += 1
+    cart_item.save()
 
-#             cart_item.save()
+    return redirect('view_cart')
 
-#             messages.success(request, f'{product.name} has been added to your cart.')
-#     else:
-#         form = ProductAddToCartForm(request=request)
-
-#     context = {'form': form, 'product': product}
-#     return render(request, 'cart.html', context)
+def remove_from_cart(request, item_id):
+    cart_item = CartItem.objects.get(id=item_id)
+    if cart_item.quantity > 1:
+        cart_item.quantity -= 1
+        cart_item.save()
+    else:
+        cart_item.delete()
+    return redirect('view_cart')
